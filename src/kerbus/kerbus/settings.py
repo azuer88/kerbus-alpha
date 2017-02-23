@@ -118,3 +118,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+
+
+
+# split settings:
+try:
+    LOCAL_SETTINGS
+except NameError:
+    try:
+        from local_settings import *  # NOQA W040 1
+    except ImportError:
+        pass
