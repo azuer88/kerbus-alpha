@@ -16,6 +16,12 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+# Build paths for webpack and static settings
+DJANGO_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_NAME = os.path.basename(DJANGO_DIR)
+PROJECT_ROOT = os.path.normpath(os.path.join(DJANGO_DIR, "../../../"))
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
@@ -37,6 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'webpack_loader',
+    'main',
 ]
 
 MIDDLEWARE = [
@@ -118,12 +127,34 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.normpath(os.path.join(BASE_DIR, '../static'))
+ASSETS_ROOT = os.path.join(PROJECT_ROOT,'src', 'assets')
+STATICFILES_DIR = (
+     ('fonts', os.path.join(ASSETS_ROOT, 'fonts')),
+     ('images', os.path.join(ASSETS_ROOT, 'images')),
+     ('icons', os.path.join(ASSETS_ROOT, 'icons')),
+)
+BUNDLES_DIR = os.path.join(ASSETS_ROOT, 'bundles', '')
 
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'CACHE': not DEBUG,
+        'BUNDLE_DIR_NAME': BUNDLES_DIR,  # must end with slash
+        'STATS_FILE': os.path.join(PROJECT_ROOT, 'webpack-stats.json'),
+        'POLL_INTERVAL': 0.1,
+        'IGNORE': ['.+\.hot-update.js', '.+\.map'],
+    }
+}
 
-
-
+if not DEBUG:
+   BUNDLES_DIR = os.path.join(PROJECT_DIR, 'src', 'static', 'bundles', '')
+   WEBPACK_LOADER['DEFAULT'].update({
+      'BUNDLE_DIR_NAME': BUNDLES_DIR,
+      'STATS_FILE': os.path.join(PROJECT_ROOT, 'webpack-stats-prod.json'),
+   })
 
 # split settings:
+from local_settings import *
 try:
     LOCAL_SETTINGS
 except NameError:
