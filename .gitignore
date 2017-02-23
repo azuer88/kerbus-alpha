@@ -90,3 +90,6 @@ ENV/
 
 # NodeJS modules
 node_modules/
+
+# webpack compiled settings
+webpack-stats.json
