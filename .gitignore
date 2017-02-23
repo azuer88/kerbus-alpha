@@ -96,5 +96,5 @@ node_modules/
 # webpack compiled settings
 webpack-stats.json
 # webpack bundles
-src/assets/bundles
-
+src/assets/bundles/
+src/static/
