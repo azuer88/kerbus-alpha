@@ -9,7 +9,10 @@
 // 2. Vendors
 @import
   'vendor/normalize',
-  'vendor/bootstrap';
+  'vendor/bootstrap',
+  'vendor/bootstrap-sprockets',
+  'vendor/bootstrap-mincer',
+  'vendor/bootstrap-compass';
 
 // 3. Base stuff
 @import
@@ -34,3 +37,4 @@
 // 7. Themes
 @import
   'themes/default';
+
