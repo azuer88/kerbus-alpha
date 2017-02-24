@@ -1,6 +1,8 @@
 var React = require('react');
 
-var MyJumbotron = require('../react-bootstrap/lib/Jumbotron');
+var MyJumbotron = require('react-bootstrap/lib/Jumbotron');
+
+var Alert = require('react-bootstrap').Alert;
 
 module.exports = React.createClass({
     render: function() {

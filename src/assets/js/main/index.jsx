@@ -1,4 +1,4 @@
-require("../react-bootstrap/dist/react-bootstrap.min.js");
+// require("react-bootstrap/dist/react-bootstrap.min.js");
 
 var React = require('react');
 var ReactDOM = require('react-dom');
