@@ -1,4 +1,7 @@
 // require("react-bootstrap/dist/react-bootstrap.min.js");
+// require('jquery')
+// require('bootstrap-loader');
+require('bootstrap-sass-loader');
 
 var React = require('react');
 var ReactDOM = require('react-dom');

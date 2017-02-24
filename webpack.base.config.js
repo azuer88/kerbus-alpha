@@ -34,6 +34,10 @@ module.exports = {
 
   module: {
     loaders: [
+      // bootrap 3
+      {
+        test:/bootstrap-sass[\/\\]assets[\/\\]javascripts[\/\\]/, loader: 'import-loader?jQuery=jquery'
+      },
       {
         test: /\.jsx?$/, exclude: /(node_modules|bower_components)/, loader: 'babel' 
       },
