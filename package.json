@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/azuer88/kerbus-alpha#readme",
   "devDependencies": {
+    "babel-cli": "^6.23.0",
     "babel-core": "^6.9.1",
     "babel-loader": "^6.2.4",
     "babel-preset-react": "^6.5.0",
@@ -56,6 +57,7 @@
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
+    "bootstrap": "^3.3.7",
     "react-bootstrap": "^0.29.5"
   }
 }
