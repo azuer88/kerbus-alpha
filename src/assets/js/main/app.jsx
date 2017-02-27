@@ -5,7 +5,12 @@ var Sidebar = require('./sidebar');
 var Alert = require('react-bootstrap').Alert;
 var MenuItem = require('./menuitem');
 
+var fetcher = require('fetch-er');
+
 module.exports = React.createClass({
+    componentDidMount: function() {
+
+    },
     render: function() {
         return (
             <div id="wrapper">
@@ -18,7 +23,7 @@ module.exports = React.createClass({
                         <MenuItem href="#">Menu One</MenuItem>
                         <MenuItem href="#">Menu One</MenuItem>
                     </Sidebar>
-                </div> 
+                </div>
                 <div id="page-content-wrapper">
                     <div className="container-fluid">
                         <MyJumbotron>
