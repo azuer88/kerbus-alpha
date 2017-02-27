@@ -45,7 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'webpack_loader',
+    'rest_framework',
     'main',
+    'asimplemenu',
 ]
 
 MIDDLEWARE = [
@@ -162,3 +164,11 @@ except NameError:
         from local_settings import *  # NOQA W040 1
     except ImportError:
         pass
+
+REST_FRAMEWORK = {
+    # Use Django's standard django.contrib.auth permissions
+    'DEFAULT_PERMISSION_CLASSES': [
+         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+    ],
+    'PAGE_SIZE': 10,
+}
