@@ -8,20 +8,32 @@ var MenuItem = require('./menuitem');
 var fetcher = require('fetch-er');
 
 module.exports = React.createClass({
-    componentDidMount: function() {
-
+    getInitialState: function() {
+         return {
+             menu: []
+         } 
     },
+    
+    componentDidMount: function() {
+       fetcher.getJSON('/menuitem/?format=json').then(
+         ([v, s, r]) => {
+           const menu = v.results;
+           this.setState({ menu: menu });
+       });
+    },
+
     render: function() {
         return (
             <div id="wrapper">
                 <div id="sidebar-wrapper">
                     <Sidebar>
-                        <MenuItem href="#">Menu One</MenuItem>
-                        <MenuItem href="#">Menu One</MenuItem>
-                        <MenuItem href="#">Menu One</MenuItem>
-                        <MenuItem href="#">Menu One</MenuItem>
-                        <MenuItem href="#">Menu One</MenuItem>
-                        <MenuItem href="#">Menu One</MenuItem>
+                       {
+                         this.state.menu.map(item =>
+                            <MenuItem key={item.id} href={item.link}>
+                                {item.title}
+                            </MenuItem>
+                         )
+                       }
                     </Sidebar>
                 </div>
                 <div id="page-content-wrapper">
