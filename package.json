@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "build": "webpack --config webpack.local.config.js --progress --colors",
-    "build-production": "webpack --config webpack.prod.config.js --progress --colors",
+    "build-production": "webpack --config webpack.prod.config.js --progress --colors -p",
     "watch": "node server.js",
     "django": "src/kerbus/manage.py runserver"
   },
@@ -29,8 +29,9 @@
   "homepage": "https://github.com/azuer88/kerbus-alpha#readme",
   "devDependencies": {
     "babel-cli": "^6.23.0",
-    "babel-core": "^6.9.1",
-    "babel-loader": "^6.2.4",
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.5.0",
     "bootstrap": "^3.3.6",
     "bootstrap-loader": "^1.3.3",

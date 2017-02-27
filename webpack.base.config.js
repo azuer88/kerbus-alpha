@@ -6,7 +6,7 @@ var cssPath = path.resolve("./src/assets/css/");
 var scssPath = path.resolve("./src/assets/sass/");
 
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-// var CommonsPlugin = new require("webpack/lib/optimize/CommonsChunkPlugin")
+var CommonsPlugin = new require("webpack/lib/optimize/CommonsChunkPlugin")
 
 module.exports = {
   context: __dirname,
@@ -26,20 +26,26 @@ module.exports = {
 
   plugins: [
       new ExtractTextPlugin("[name].css"),
-      //new CommonsPlugin({
-      // minChunks: 3,
-      // name: "common"
-      //})
+      new CommonsPlugin({
+      minChunks: 3,
+      name: "common"
+      })
   ], // add all common plugins here
 
   module: {
     loaders: [
       // bootrap 3
       {
-        test:/bootstrap-sass[\/\\]assets[\/\\]javascripts[\/\\]/, loader: 'import-loader?jQuery=jquery'
+        test:/bootstrap-sass[\/\\]assets[\/\\]javascripts[\/\\]/, 
+        loader: 'import-loader?jQuery=jquery'
       },
       {
-        test: /\.jsx?$/, exclude: /(node_modules|bower_components)/, loader: 'babel' 
+        test: /\.jsx?$/, 
+        exclude: /(node_modules|bower_components)/, 
+        loader: 'babel-loader', 
+        query: {
+          presets: ['es2015']
+        }
       },
       { 
         test: /\.css$/, 

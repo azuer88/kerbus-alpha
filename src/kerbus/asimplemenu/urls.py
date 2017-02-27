@@ -8,6 +8,6 @@ router = routers.DefaultRouter()
 router.register(r'', MenuItemViewSet)
 
 urlpatterns = [
-    url('', include(router.urls)),
+    url('^', include(router.urls)),
 ]
 
