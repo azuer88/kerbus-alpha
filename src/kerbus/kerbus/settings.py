@@ -29,7 +29,7 @@ PROJECT_ROOT = os.path.normpath(os.path.join(DJANGO_DIR, "../../../"))
 SECRET_KEY = 'ub&1l9*b))7$wr+gn&^j3rx7r2rl5!b$b!^fws9tb2db_(i7jn'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
