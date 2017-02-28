@@ -1,20 +1,33 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from fabric.api import local, run, require, settings, abort, cd
+import os
+
+from fabric.api import env, local, run, settings, abort, cd, roles
 from fabric.contrib.console import confirm
 
-REPOS = (("kerbus", "origin", "master"),)
 
+
+env.roledefs = {
+   'root': ['root@django',],
+   'user': ['django@django',],
+}
+
+def _get_repo_name():
+    fname = os.path.realpath(__file__)
+    dirname = os.path.dirname(fname)
+    return os.path.basename(dirname)
 
 def hello():
     print("Hello, World!")
 
 
+@roles('user')
 def git_pull():
     "Updates the repository."
     run("git pull $(parent) $(branch)")
 
 
+@roles('user')
 def git_reset():
     "Resets the repository to specified version."
     run("git reset --hard $(hash)")
@@ -22,29 +35,17 @@ def git_reset():
 
 def reload_supervisor():
     "Reloads supvervisord configuration files."
-    require('fab_hosts', provided_by[production_root])
     run("supervisord reload")
 
 
 def reload_nginx():
     "Reloads nginx configuration files."
-    require('fab_hosts', provided_by[production_root])
     run("supervisord reload")
     run("nginx -s reload")
 
 
-def production_user():
-    config.fab_hosts = ['django@django',]
-    config.repos = REPOS
-
-
-def production_root():
-    config.fab_hosts = ['root@django',]
-    config.repos = REPOS
-
-
+@roles('user')
 def pull():
-    require('fab_hosts', provided_by=[production_user])
     for repo, parent, branch in config.repos:
         config.repo = repo
         config.parent = parent
@@ -57,20 +58,22 @@ def test():
     if result.failed and not confirm("Tests failed.  Continue anyway?"):
        abort("Aborting at user request.")
 
+
+@roles('user')
 def reset(repo, hash):
     """
     Rest all git repositories to specified hash.
     Usage:
         fab reset:repo=my_repo,hash=etcetc123
     """
-    require("fab_hosts", provided_by=[production_user])
     config.hash = hash
     config.repo = repo
     invoke(git_reset)
 
 
-def deploy():
-    code_dir = '/webapps/kerbus/'
+@roles('user')
+def deploy_stage1():
+    code_dir = '/webapps/%s/' % _get_repo_name()
     with cd(code_dir):
         run("git pull")
         run("touch app.wsgi")
