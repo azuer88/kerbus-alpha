@@ -2,9 +2,8 @@
 # -*- coding: utf-8 -*-
 import os
 
-from fabric.api import env, local, run, settings, abort, cd, roles
+from fabric.api import env, local, run, settings, abort, lcd, cd, roles, put
 from fabric.contrib.console import confirm
-
 
 
 env.roledefs = {
@@ -12,10 +11,30 @@ env.roledefs = {
    'user': ['django@django',],
 }
 
-def _get_repo_name():
+def _get_prod_file_list():
+    return [
+             os.path.join('src', _get_repo_name()),
+             'src/static/',
+             'requirements.txt',
+             'webpack-stats-prod.json',
+             'LICENSE',
+             'README.md',
+           ]
+
+
+def _get_django_path():
     fname = os.path.realpath(__file__)
-    dirname = os.path.dirname(fname)
-    return os.path.basename(dirname)
+    return os.path.dirname(fname)
+    
+
+def _get_project_path():
+    django = _get_django_path()
+    return os.path.normpath(os.path.join(django, '../../'))
+
+
+def _get_repo_name():
+    return os.path.basename(_get_django_path())
+
 
 def hello():
     print("Hello, World!")
@@ -78,3 +97,42 @@ def deploy_stage1():
         run("git pull")
         run("touch app.wsgi")
 
+
+def replace_path_stats():
+    prj = _get_project_path()
+    # src = os.path.join(prj, 'src') 
+    src = prj
+    dst = os.path.join('/webapps', _get_repo_name())
+    target = os.path.join(prj, 'webpack-stats-prod.json')
+    output = target + '.out'
+    with open(target, 'r') as inf:
+        with open(output, 'w') as outf:
+             for line in inf:
+                 outf.write(line.replace(src, dst))
+    print "output file: ", output
+
+
+def create_tar():
+    with lcd("../../"):
+         arc = _get_repo_name() + '.tar.bz2'
+         local("tar cvfj " + 
+                arc + ' ' + 
+                "--exclude='*.pyc' " +
+                "--exclude='local_settings.py' " +
+                " ".join(_get_prod_file_list()))
+
+@roles('user')
+def upload_tar():
+    prj_name = _get_repo_name()
+    target = prj_name + '.tar.bz2'
+    with cd("/webapps/"):
+        with lcd("../../"):
+            put(target, prj_name)
+
+
+@roles('user')
+def untar():
+    prj_name = _get_repo_name()
+    target = prj_name + '.tar.bz2'
+    with cd("/webapps/" + prj_name):
+         run('tar xvfj ' + target)

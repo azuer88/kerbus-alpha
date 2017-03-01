@@ -95,9 +95,15 @@ node_modules/
 
 # webpack compiled settings
 webpack-stats.json
+webpack-stats-prod.json
+
 # webpack bundles
 src/assets/bundles/
 src/static/
 
 # webstorm config
 .idea/
+
+# deployment archives
+*.tar.bz2
+

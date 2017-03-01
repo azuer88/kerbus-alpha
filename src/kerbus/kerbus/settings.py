@@ -148,12 +148,6 @@ WEBPACK_LOADER = {
     }
 }
 
-if not DEBUG:
-   BUNDLES_DIR = os.path.join(PROJECT_DIR, 'src', 'static', 'bundles', '')
-   WEBPACK_LOADER['DEFAULT'].update({
-      'BUNDLE_DIR_NAME': BUNDLES_DIR,
-      'STATS_FILE': os.path.join(PROJECT_ROOT, 'webpack-stats-prod.json'),
-   })
 
 # split settings:
 from local_settings import *
@@ -172,3 +166,11 @@ REST_FRAMEWORK = {
     ],
     'PAGE_SIZE': 10,
 }
+
+
+if not DEBUG:
+   BUNDLES_DIR = os.path.join(PROJECT_ROOT, 'src', 'static', 'bundles', '')
+   WEBPACK_LOADER['DEFAULT'].update({
+      'BUNDLE_DIR_NAME': BUNDLES_DIR,
+      'STATS_FILE': os.path.join(PROJECT_ROOT, 'webpack-stats-prod.json'),
+   })
