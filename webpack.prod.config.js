@@ -4,9 +4,10 @@ var BundleTracker = require('webpack-bundle-tracker')
 var config = require('./webpack.base.config.js')
 
 config.output.path = require('path').resolve('./src/static/bundles/')
+config.output.publicPath = "/static/bundles/"
 
 config.plugins = config.plugins.concat([
-  new BundleTracker({filename: './webpack-stats.json'}),
+  new BundleTracker({filename: './webpack-stats-prod.json'}),
 
   // removes a lot of debugging code in React
   new webpack.DefinePlugin({
