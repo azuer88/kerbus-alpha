@@ -20,6 +20,7 @@ import settings
 from api import UserViewSet
 from rest_framework import routers
 
+from custom.views import my404handler
 
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
@@ -39,3 +40,6 @@ if settings.DEBUG:
     urlpatterns += [
         url(r'^__debug__/', include(debug_toolbar.urls)),
     ]
+
+if not settings.DEBUG:
+   handler404 = my404handler 

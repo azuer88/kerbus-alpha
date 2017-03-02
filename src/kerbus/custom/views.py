@@ -1,15 +1,18 @@
 from django.shortcuts import render
+from django.http import HttpResponseNotFound
+from django.template import loader 
 
 from common.utils import render_to
 
 # Create your views here.
 def _page_not_found(request):
+    t = loader.get_template('error.html')
     data = {
               "title": "Page not Found Error",
               "content": "<h1>Oops!</h1>"
            }
-    return render(request, 'error.html', 
-              data) 
+    return HttpResponseNotFound(t.render(data, request),
+             content_type='text/html')
 
 
 @render_to('error.html')
