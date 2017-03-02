@@ -131,10 +131,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.normpath(os.path.join(BASE_DIR, '../static'))
 ASSETS_ROOT = os.path.join(PROJECT_ROOT,'src', 'assets')
-STATICFILES_DIR = (
+STATICFILES_DIRS = (
      ('fonts', os.path.join(ASSETS_ROOT, 'fonts')),
      ('images', os.path.join(ASSETS_ROOT, 'images')),
      ('icons', os.path.join(ASSETS_ROOT, 'icons')),
+#     ('html', os.path.join(ASSETS_ROOT, 'html')),
 )
 BUNDLES_DIR = os.path.join(ASSETS_ROOT, 'bundles', '')
 

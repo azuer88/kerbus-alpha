@@ -60,6 +60,8 @@ def test():
     if result.failed and not confirm("Tests failed.  Continue anyway?"):
        abort("Aborting at user request.")
 
+def collectstatic():
+    local('./manage.py collectstatic --no-input')
 
 def _replace_path_stats():
     prj = _get_project_path()
@@ -95,6 +97,7 @@ def upload_tar():
 
 @roles('user')
 def untar():
+    "untar the upload archive file."
     prj_name = _get_repo_name()
     target = prj_name + '.tar.bz2'
     with cd("/webapps/" + prj_name):
@@ -102,7 +105,9 @@ def untar():
 
 
 def deploy():
+    "deploy files to the django production server."
     execute(test)
+    execute(collectstatic)
     execute(create_tar)
     execute(upload_tar)
     execute(untar)
