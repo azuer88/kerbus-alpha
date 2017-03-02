@@ -1,4 +1,6 @@
 # azuer88:  from https://lincolnloop.com/blog/2008/may/10/getting-requestcontext-your-templates/
+from django.shortcuts import render_to_response
+
 
 def render_to(template_name):
     def renderer(func):

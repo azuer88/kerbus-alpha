@@ -2,6 +2,7 @@
 // require('jquery')
 // require('bootstrap-loader');
 require('bootstrap-loader');
+require('jquery') 
 
 var React = require('react');
 var ReactDOM = require('react-dom');
