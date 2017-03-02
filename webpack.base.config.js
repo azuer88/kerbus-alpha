@@ -37,7 +37,7 @@ module.exports = {
       // bootrap 3
       {
         test:/bootstrap-sass[\/\\]assets[\/\\]javascripts[\/\\]/, 
-        loader: 'import-loader?jQuery=jquery'
+        loader: 'imports?jQuery=jquery'
       },
       {
         test: /\.jsx?$/, 
