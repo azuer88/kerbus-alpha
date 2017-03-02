@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'webpack_loader',
     'rest_framework',
     'main',
+    'custom',
     'asimplemenu',
 ]
 
