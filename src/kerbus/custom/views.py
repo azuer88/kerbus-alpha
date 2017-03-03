@@ -9,7 +9,10 @@ def _page_not_found(request):
     t = loader.get_template('error.html')
     data = {
               "title": "Page not Found Error",
-              "content": "<h1>Oops!</h1>"
+              "content":  {
+                  "title": "Oops!",
+                  "message": "Oh, no!!!!  You broke the internet!"
+              }
            }
     return HttpResponseNotFound(t.render(data, request),
              content_type='text/html')
