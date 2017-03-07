@@ -10,7 +10,7 @@ var CommonsPlugin = new require("webpack/lib/optimize/CommonsChunkPlugin")
 
 module.exports = {
   context: __dirname,
-  root: srcPath,
+  //root: srcPath,
   // entry: "./src/assets/js/index",
   entry: {
     'main': "./src/assets/js/main/index",
@@ -23,65 +23,72 @@ module.exports = {
       chunkFilename: "[name]-[id].js"
       // allChunks: true
   },
-
   plugins: [
       new ExtractTextPlugin("[name].css"),
       new CommonsPlugin({
-      minChunks: 3,
-      name: "common"
-      })
-  ], // add all common plugins here
-
+              minChunks: 4,
+              name: "common",
+      }),
+  ],
   module: {
-    loaders: [
-      // bootrap 3
-      {
-        test:/bootstrap-sass[\/\\]assets[\/\\]javascripts[\/\\]/, 
-        loader: 'imports?jQuery=jquery'
-      },
-      {
-        test: /\.jsx?$/, 
-        exclude: /(node_modules|bower_components)/, 
-        loader: 'babel-loader', 
-        query: {
-          presets: ['es2015']
-        }
-      },
-      { 
-        test: /\.css$/, 
-        loader: ExtractTextPlugin.extract("style", ["css", "autoprefixer"])
-      },  
-      {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract("style", ["css", "sass"])
-      },
-      {
-        test: /\.txt$/,
-        loader: "raw-loader",
-      }, 
-      {
-        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
-        loader: "url-loader?limit=10000",
-      }, 
-      {
-        test: /\.(eot|ttf|wav|mp3)$/,
-        loader: "file-loader",
-      }
-    ] // add all common loaders here
-  },
-  sassLoader: {
-    includePath: [scssPath]
-  },
+      rules: [
+         {
+             test: /bootstrap-sass[\/\\]assets[\/\\]javascripts[\/\\]/,
+             use: 'imports-loader?jQuery=jquery'
+         },
+         {
+             test: /\.jsx?$/,
+             exclude: /(node_modules|bower_components)/,
+             loader: 'babel-loader',
+             options: {
+                       presets: ['es2015']
+                     }
+         },
+         {
+             test:/\.css$/,
+             use: ExtractTextPlugin.extract(
+                     {
+                        fallback: "style-loader",
+                        use: ["css-loader", "autoprefixer"]
+                     }
+                  )
+                       
+         },
+         {
+             test:/\.scss$/,
+             use: ExtractTextPlugin.extract(
+                     {
+                       fallback: "style-loader",
+                       use: ["css-loader", "sass-loader"]
+                     }
+                  ),
+         },
 
-  resolve: {
-    modulesDirectories: [
-        "node_modules",
-        "bower_components",
-        srcPath,
-        cssPath,
-        scssPath,
-    ],
-    extensions: ["", ".js", ".jsx", "css", "sass", "scss"]
+         {
+             test: /\.txt$/,
+             use: "raw-loader",
+         },
+
+         {
+             test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ico)$/,
+             use:  "url-loader?limit=10000",
+         },
+         {
+             test: /\.(eot|ttf|wav|mp3)$/,
+             use:  "file-loader",
+         },
+
+      ],
   },
-  debug: true
+  resolve: {
+      modules: [
+          "./node_modules",
+          "./bower_components",
+           srcPath,
+           cssPath,
+           scssPath,
+      ],
+      extensions: 
+           [".js", ".jsx", ".css", ".sass", ".csss"]
+  }
 }

@@ -15,9 +15,6 @@ config.plugins = config.plugins.concat([
       'NODE_ENV': JSON.stringify('production')
   }}),
 
-  // keeps hashes consistent between compilations
-  new webpack.optimize.OccurenceOrderPlugin(),
-
   // minifies your code
   new webpack.optimize.UglifyJsPlugin({
     compressor: {
@@ -27,10 +24,10 @@ config.plugins = config.plugins.concat([
 ])
 
 // Add a loader for JSX files
-config.module.loaders.push({
+config.module.rules.push({
     test: /\.jsx?$/, 
     exclude: /node_modules/, 
-    loader: 'babel',
+    loader: 'babel-loader',
     query: { presets: ['react']}
 })
 

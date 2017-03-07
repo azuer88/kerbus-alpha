@@ -25,18 +25,19 @@ config.output.publicPath = 'http://localhost:3000/assets/bundles/'
 // Add HotModuleReplacementPlugin and BundleTracker plugins
 config.plugins = config.plugins.concat([
   new webpack.HotModuleReplacementPlugin(),
-  new webpack.NoErrorsPlugin(),
-  new BundleTracker({filename: './webpack-stats.json'}),
+  new webpack.NoEmitOnErrorsPlugin(),
+  new BundleTracker()
+            // {filename: './webpack-stats.json'}),
 ])
 
 // Add a loader for JSX files with react-hot enabled
-config.module.loaders.push(
+config.module.rules.push(
   { 
     test: /\.jsx?$/, 
     exclude: /node_modules/,
-    loaders: 
+    use: 
         [
-            'react-hot', 
+            'react-hot-loader', 
             'babel-loader?presets[]=react'
         ] 
   }
