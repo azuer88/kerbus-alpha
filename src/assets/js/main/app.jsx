@@ -2,7 +2,6 @@ var React = require('react');
 
 var MyJumbotron = require('react-bootstrap/lib/Jumbotron');
 var Sidebar = require('./sidebar');
-var Alert = require('react-bootstrap').Alert;
 var MenuItem = require('./menuitem');
 
 var fetcher = require('fetch-er');
@@ -42,7 +41,6 @@ module.exports = React.createClass({
                            <h1>Hello, there!</h1>
                            <p>This is a  sample Jumbotron</p>
                         </MyJumbotron>
-                        <Alert>This is an alert</Alert>
                    </div>
                </div>
             </div>
