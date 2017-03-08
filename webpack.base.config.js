@@ -8,6 +8,8 @@ var scssPath = path.resolve("./src/assets/sass/");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var CommonsPlugin = new require("webpack/lib/optimize/CommonsChunkPlugin")
 
+process.traceDeprecation = true;
+
 module.exports = {
   context: __dirname,
   //root: srcPath,

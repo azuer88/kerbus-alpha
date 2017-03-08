@@ -19,7 +19,16 @@ config.plugins = config.plugins.concat([
   new webpack.optimize.UglifyJsPlugin({
     compressor: {
       warnings: false
-    }
+    },
+    beautify: false,
+    mangle: {
+      screw_ie8: true,
+      keep_fname: true
+    },
+    compress: {
+      screw_ie8: true
+    },
+    comments: false
   })
 ])
 
