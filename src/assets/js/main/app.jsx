@@ -8,7 +8,7 @@ module.exports = React.createClass({
         return (
             <div>
                 <div id="sidebar-wrapper">
-                   <DynMenu />
+                   <DynMenu group="default"/>
                 </div>
                 <div id="page-content-wrapper">
                         <MyJumbotron>

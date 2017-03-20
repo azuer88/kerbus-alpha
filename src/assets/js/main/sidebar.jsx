@@ -3,17 +3,16 @@
  */
 var React = require('react');
 
-function mainmenu_click() {
-   alert('please select an item below');
-}
-
 module.exports = React.createClass({
+    handleMenuClick: function(e) {
+        this.props.onTitleClick(e);
+    },
     render: function() {
         return (
             <div id="sidebar-wrapper">
                <ul className="sidebar-nav">
                    <li className="sidebar-brand">
-                      <a href="#" onClick={mainmenu_click}>
+                      <a href="#" onClick={this.handleMenuClick}>
                       Main Menu
                       </a>
                    </li>
