@@ -25,6 +25,9 @@ class Group(models.Model):
     name = NameField()
     description = DescField()
 
+    def __unicode__(self):
+        return self.name
+
 
 class Item(models.Model):
     title = NameField()
