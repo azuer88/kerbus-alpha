@@ -19,4 +19,4 @@ var App = require('./app');
 require("../../sass/main.scss");
 // require("bootstrap-loader");
 
-ReactDOM.render(<App/>, document.getElementById('content'));
+ReactDOM.render(<App/>, document.getElementById('wrapper'));

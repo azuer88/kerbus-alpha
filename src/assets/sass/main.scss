@@ -39,3 +39,6 @@
 @import
   'themes/default';
 
+// 8. Vendor-Extensions - override vendor specific settings
+@import 
+  'vendor-extensions/_bootstrap.scss';
