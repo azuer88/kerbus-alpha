@@ -34,6 +34,7 @@ class Item(models.Model):
     link = models.CharField(max_length=80,
                             blank=True, null=False, default='')
     sequence = models.IntegerField(default=0)
+    groups = models.ManyToManyField(Group, related_name="group")
 
     def __unicode__(self):
         if self.link:
