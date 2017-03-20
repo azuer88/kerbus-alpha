@@ -31,7 +31,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^error/', include('custom.urls')),
     url(r'^', include(router.urls)),
-    url('menuitem/', include('asimplemenu.urls')),
+    url('menu/', include('asimplemenu.urls')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
 
@@ -42,4 +42,4 @@ if settings.DEBUG:
     ]
 
 if not settings.DEBUG:
-   handler404 = my404handler 
+   handler404 = my404handler
