@@ -13,7 +13,7 @@ module.exports = React.createClass({
             this.loadMenu('Test')
         else
             this.loadMenu('Default');
-        return false;
+        e.preventDefault();
     },
     getInitialState: function() {
          return {
