@@ -13,7 +13,7 @@ module.exports = React.createClass({
                <ul className="sidebar-nav">
                    <li className="sidebar-brand">
                       <a href="#" onClick={this.handleMenuClick}>
-                      Main Menu
+                      {this.props.title}
                       </a>
                    </li>
                    {this.props.children}

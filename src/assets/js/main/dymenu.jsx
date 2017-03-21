@@ -9,37 +9,33 @@ var Holder = require('react-placeholder');
 
 module.exports = React.createClass({
     handleClick: function(e) {
-        alert('You click the title');
         if (this.state.group === 'default') 
-            this.setState({group: 'test'})
+            this.loadMenu('test')
         else
-            this.setState({group: 'default'});
+            this.loadMenu('default');
     },
     getInitialState: function() {
          return {
-             menuready: false,
              group: 'test',
              menu: []
          } 
     },
-    
-    getMenuItems: function() {
-       fetcher.getJSON('/menu/group/'+this.state.group+'/?format=json').then(
-         ([v, s, r]) => {
-           const menu = v.results;
-           this.setState({ menu: menu, menuready: true });
-       });
+    componentWillMount: function() {
+        this.loadMenu();
     },
-
+    loadMenu: function(name) {
+        var target = name;
+        if (target == null) { target = this.state.group; }
+        fetcher.getJSON('/menu/group/'+target+'/?format=json').then(
+                ([v, s, r]) => {
+                    const menu = v.results;
+                    this.setState({ menu: menu, group: target });
+                }
+                );
+    },
     render: function() {
-        this.getMenuItems()
         return (
-                <Holder
-                   rows={10}
-                   ready={this.state.menuready}
-                   className="sidebar-brand"
-                   >
-                   <Sidebar onTitleClick={this.handleClick}>
+                   <Sidebar title={this.state.group} onTitleClick={this.handleClick}>
                       {
                         this.state.menu.map(item =>
                            <MenuItem key={item.id} href={item.link}>
@@ -48,7 +44,6 @@ module.exports = React.createClass({
                         )
                       }
                    </Sidebar>
-                </Holder>
         );
     }
 });
