@@ -39,7 +39,7 @@ module.exports = React.createClass({
                    <Sidebar title={this.state.group} onTitleClick={this.handleClick}>
                       {
                         this.state.menu.map(item =>
-                           <MenuItem key={item.id} href={item.link}>
+                           <MenuItem key={item.id} href={item.link} load={item.load} loader={this.loadMenu}>
                                {item.title}
                            </MenuItem>
                         )
