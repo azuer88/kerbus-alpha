@@ -3,6 +3,8 @@ from models import Item, Group
 
 
 class MenuItemSerializer(serializers.ModelSerializer):
+    load = serializers.StringRelatedField()
+
     class Meta:
         model = Item
         fields = ['id', 'title', 'link', 'load']
