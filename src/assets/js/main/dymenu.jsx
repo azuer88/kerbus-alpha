@@ -9,15 +9,15 @@ var Holder = require('react-placeholder');
 
 module.exports = React.createClass({
     handleClick: function(e) {
-        if (this.state.group === 'default') 
-            this.loadMenu('test')
+        if (this.state.group.toUpperCase() === 'DEFAULT') 
+            this.loadMenu('Test')
         else
-            this.loadMenu('default');
+            this.loadMenu('Default');
         return false;
     },
     getInitialState: function() {
          return {
-             group: 'test',
+             group: 'Default',
              menu: []
          } 
     },
