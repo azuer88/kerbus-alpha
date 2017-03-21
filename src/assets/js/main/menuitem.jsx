@@ -7,24 +7,20 @@ var React = require('react');
 module.exports = React.createClass({
 
    handleClick: function(ev) {
-       if (this.props.load) {
-           alert("should load menu");
-           if (this.props.loader) {
-               alert("we have a loader");
-               this.props.loader(this.props.load);
-           }
-       } else {
-           alert("should open link");
-       }
-       ev.preventDefault();
+        if (this.props.load) {
+            if (this.props.loader) {
+                this.props.loader(this.props.load);
+                ev.preventDefault();
+            }
+        } 
    },
    render: function() {
-     return (
+        return (
         <li>
            <a href={this.props.href} onClick={this.handleClick}>
            ::  {this.props.children}  ::
            </a>
         </li>
-     );
-   }
+        );
+  }
 });
