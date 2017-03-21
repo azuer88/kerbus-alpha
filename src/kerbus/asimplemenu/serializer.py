@@ -5,7 +5,7 @@ from models import Item, Group
 class MenuItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Item
-        fields = ['id', 'title', 'link']
+        fields = ['id', 'title', 'link', 'load']
 
 
 class MenuGroupSerializer(serializers.ModelSerializer):

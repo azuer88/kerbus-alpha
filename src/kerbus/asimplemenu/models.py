@@ -33,6 +33,7 @@ class Item(models.Model):
     title = NameField()
     link = models.CharField(max_length=80,
                             blank=True, null=False, default='')
+    load = models.ForeignKey(Group, null=True, blank=True)
     sequence = models.IntegerField(default=0)
     groups = models.ManyToManyField(Group, related_name="group")
 
