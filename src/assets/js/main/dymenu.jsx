@@ -2,10 +2,7 @@ var React = require('react');
 
 var Sidebar = require('./sidebar');
 var MenuItem = require('./menuitem');
-
-var fetcher = require('fetch-er');
-var Holder = require('react-placeholder');
-
+var $ = require('jquery');
 
 module.exports = React.createClass({
     handleClick: function(e) {
@@ -26,13 +23,27 @@ module.exports = React.createClass({
     },
     loadMenu: function(name) {
         var target = name;
+        var target_url;
+        const cookie = document.cookie;
+        const data = {
+            cookie: cookie
+        };
         if (target == null) { target = this.state.group; }
-        fetcher.getJSON('/menu/group/'+target+'/?format=json').then(
-                ([v, s, r]) => {
-                    const menu = v.results;
-                    this.setState({ menu: menu, group: target });
-                }
-                );
+        target_url = '/menu/group/'+target+'/?format=json';
+        $.ajax({
+            url: target_url,
+            dataType: 'json',
+            cache: false,
+            success: function(data) {
+                this.setState({
+                    menu: data.results,
+                    group: target
+                });
+            }.bind(this),
+            error: function(xhr, st, err) {
+                console.error(target_url, st, err.toString())
+            }.bind(this),
+        });
     },
     render: function() {
         return (
