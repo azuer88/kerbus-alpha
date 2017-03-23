@@ -17,22 +17,22 @@ from django.conf.urls import url, include
 from django.contrib import admin
 import settings
 
-from api import UserViewSet
-from rest_framework import routers
+# from api import UserViewSet
+# from rest_framework import routers
 
 from custom.views import my404handler
 
-router = routers.DefaultRouter()
-router.register(r'users', UserViewSet)
+# router = routers.DefaultRouter()
+# router.register(r'users', UserViewSet)
 
 
 urlpatterns = [
     url('', include('main.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^error/', include('custom.urls')),
-    url(r'^', include(router.urls)),
+    # url(r'^', include(router.urls)),
     url('menu/', include('asimplemenu.urls')),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    # url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
 
 if settings.DEBUG:
