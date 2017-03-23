@@ -33,7 +33,6 @@ DEBUG = False
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -96,6 +95,7 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
 
+# pymode: pep8_disable=E501
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -131,13 +131,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.normpath(os.path.join(BASE_DIR, '../static'))
-ASSETS_ROOT = os.path.join(PROJECT_ROOT,'src', 'assets')
+ASSETS_ROOT = os.path.join(PROJECT_ROOT, 'src', 'assets')
 STATICFILES_DIRS = (
      ('fonts', os.path.join(ASSETS_ROOT, 'fonts')),
      ('images', os.path.join(ASSETS_ROOT, 'images')),
      ('icons', os.path.join(ASSETS_ROOT, 'icons')),
      ('css', os.path.join(ASSETS_ROOT, 'css')),
-#     ('html', os.path.join(ASSETS_ROOT, 'html')),
+     # ('html', os.path.join(ASSETS_ROOT, 'html')),
 )
 BUNDLES_DIR = os.path.join(ASSETS_ROOT, 'bundles', '')
 
@@ -166,6 +166,9 @@ REST_FRAMEWORK = {
     # Use Django's standard django.contrib.auth permissions
     'DEFAULT_PERMISSION_CLASSES': [
          'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
     ],
     'PAGE_SIZE': 10,
 }

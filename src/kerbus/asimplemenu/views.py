@@ -2,6 +2,10 @@
 from rest_framework import viewsets, generics
 from rest_framework.renderers import JSONRenderer
 
+# rest framework security
+from rest_framework.authentication import SessionAuthentication
+from rest_framework.permissions import IsAuthenticated
+
 from models import Item, Group
 from serializer import MenuItemSerializer, MenuGroupSerializer
 
@@ -27,6 +31,8 @@ class MenuGroupViewSet(viewsets.ModelViewSet):
 
 
 class MenuItemList(generics.ListAPIView):
+    authentication_classes = (SessionAuthentication, )
+    permission_classes = (IsAuthenticated, )
     serializer_class = MenuItemSerializer
     renderer_classes = (JSONRenderer,)
 
