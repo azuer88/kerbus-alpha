@@ -2,11 +2,13 @@ var React = require('react');
 
 var MyJumbotron = require('react-bootstrap/lib/Jumbotron');
 var DynMenu = require('./dymenu');
+var LoginButton = require('./login');
 
-var LoginModal = require('./login');
+var $ = require('jquery');
 
 module.exports = React.createClass({
     onButtonClick: function(ev) {
+        var login = $('#loginModal');
         login.open();
         ev.preventDefault();
 
@@ -30,9 +32,9 @@ module.exports = React.createClass({
                               <p>Donec nulla purus montes porta morbi quis ante nunc purus...</p>
 
                               <p><a href="#" target="_blank" className="btn btn-success btn-lg" onClick={this.onButtonClick}>Get started today</a></p>
-                           </div>
+                              <p><LoginButton refId="login-dialog-1"></LoginButton></p>
+                            </div>
                         </MyJumbotron>
-                        <LoginModal ref="login"/>
                </div>
             </div>
         );
