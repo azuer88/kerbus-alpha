@@ -8,6 +8,14 @@ var ReactDOM = require('react-dom');
 var $ = require('jquery');
 
 var LoginModal = React.createClass({
+    handleSubmit: function(ev) {
+        ev.preventDefault();
+        if (typeof this.props.onSubmit !== 'undefined') {
+            this.props.onSubmit();
+        } else {
+            console.log("onSubmit event was not defined");
+        }
+    },
     render: function() {
         return (
             <div className="modal fade" tabIndex="-1" role="dialog">
@@ -15,16 +23,19 @@ var LoginModal = React.createClass({
                     <div className="modal-content">
                         <div className="modal-header">
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 className="modal-title">Title</h4>
+                            <h4 className="modal-title"></h4>
                         </div>
 
                         <div className="modal-body">
-                            <p>Modal content</p>
+                            <form className="form-signin" onSubmit={this.handleSubmit}>
+                                <h2 className="form-signin-heading">Please login</h2>
+                                <input type="text" className="form-control" name="username" placeholder="User name" required="" autoFocus="" />
+                                <input type="password" className="form-control" name="password" placeholder="Password" required="" />
+                                <button className="btn btn-lg btn-primary btn-block">Login</button>
+                            </form>
                         </div>
 
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
-                            <button type="button" className="btn btn-primary">OK</button>
                         </div>
 
                     </div>
