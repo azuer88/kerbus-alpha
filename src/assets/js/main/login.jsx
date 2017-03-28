@@ -47,7 +47,7 @@ var LoginModal = React.createClass({
 
 var LoginButton = React.createClass({
     handleShowModal: function() {
-        var modal = React.cloneElement(<LoginModal></LoginModal>);
+        var modal = React.cloneElement(<LoginModal onSubmit={this.props.submitHandler}></LoginModal>);
         var modalContainer = document.createElement('div');
         modalContainer.id = this.props.refId;
         document.body.appendChild(modalContainer);

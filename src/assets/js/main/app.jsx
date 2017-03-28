@@ -13,6 +13,9 @@ module.exports = React.createClass({
         ev.preventDefault();
 
     },
+    onLoginSubmit: function() {
+        console.log("submit handler called");
+    },
     render: function() {
         return (
             <div>
@@ -32,7 +35,7 @@ module.exports = React.createClass({
                               <p>Donec nulla purus montes porta morbi quis ante nunc purus...</p>
 
                               <p><a href="#" target="_blank" className="btn btn-success btn-lg" onClick={this.onButtonClick}>Get started today</a></p>
-                              <LoginButton refId="login-dialog-1"></LoginButton>
+                              <LoginButton refId="login-dialog-1" submitHandler={this.onLoginSubmit}></LoginButton>
                             </div>
                         </MyJumbotron>
                </div>
