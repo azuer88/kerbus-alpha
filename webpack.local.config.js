@@ -11,12 +11,12 @@ config.entry = {
      'webpack/hot/only-dev-server',
      './src/assets/js/main/index'
     ] 
-// ,
-//  docs:
-//    ['webpack-dev-server/client?http://localhost:3000',
-//      'webpack/hot/only-dev-server',
-//      './src/assets/js/docs/index'
-//    ]
+ ,
+  login:
+    ['webpack-dev-server/client?http://localhost:3000',
+      'webpack/hot/only-dev-server',
+      './src/assets/js/login/index'
+    ]
 }
 
 // override django's STATIC_URL for webpack bundles

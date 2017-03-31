@@ -12,7 +12,7 @@ def authenticate_user(request):
     user = authenticate(username=username, password=password)
     if user is not None:
         login(request, user)
-        next_page = request.get('next', '/')
+        next_page = request.POST.get('next', '/')
         return redirect(next_page)
     else:
         return login_form(request, error="Invalid user name or password")

@@ -42,7 +42,7 @@ module.exports = React.createClass({
             }.bind(this),
             error: function(xhr, st, err) {
                 alert("Unable to load menu\nReason: "+err.toString());
-                window.location = "/login/";
+                window.location = this.props.loginURL;
             }.bind(this),
         });
     },

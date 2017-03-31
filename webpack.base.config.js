@@ -15,8 +15,8 @@ module.exports = {
   //root: srcPath,
   // entry: "./src/assets/js/index",
   entry: {
-    'main': "./src/assets/js/main/index",
-    'login': "./src/assets/sass/login",
+    main: "js/main/index",
+    login: "js/login/index"
   },
 
   output: {
