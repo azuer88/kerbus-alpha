@@ -3,8 +3,10 @@ from django.shortcuts import redirect
 
 from django.contrib.auth import authenticate, login
 
+
 def login_form(request, error=None):
     return render(request, "login.html")
+
 
 def authenticate_user(request):
     username = request.POST['username']
@@ -17,10 +19,9 @@ def authenticate_user(request):
     else:
         return login_form(request, error="Invalid user name or password")
 
+
 def index(request):
     if request.method == 'POST':
         return authenticate_user(request)
     else:
         return login_form(request)
-
-
