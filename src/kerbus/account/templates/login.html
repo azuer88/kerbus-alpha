@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load render_bundle from webpack_loader %}
+{% load staticfiles %}
+
+{% block csscontent %}
+{% render_bundle "login" "css" %}<!-- login stylesheet -->
+{% endblock csscontent %}
+
+{% block bodycontent %}
+
+    <form action="" method="post" id="login-form" class="form-signin">
+        {% csrf_token %}
+        <label class="required" for="id_username">Username:</label> 
+        <input autofocus="" id="id_username" maxlength="254" name="username" type="text" required="" class="form-control"/>
+        <label class="required" for="id_password">Password:</label> <input id="id_password" name="password" type="password" required="" class="form-control" />
+        <input type="hidden" name="next" value="/admin/" />
+        <label>&nbsp;</label>
+        <input type="submit" value="Log in" />
+    </form> 
+{% endblock bodycontent %}
+
+{% render_bundle 'login' 'css' %}

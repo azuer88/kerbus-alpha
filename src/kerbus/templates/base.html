@@ -8,14 +8,11 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="B.Cuenca">
    <link rel="icon" href="{% static "/icons/favicon.ico" %}">
+   {% block csscontent %}
+   {% endblock csscontent %}
 </head>
 <body>
 {% block bodycontent %}
-    <div id="wrapper">
-
-    </div>
-   {% render_bundle 'common' %}
-   {% render_bundle 'main' %}
 {% endblock bodycontent %}
 </body>
 </html>

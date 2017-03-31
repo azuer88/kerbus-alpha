@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login
 
 def login_form(request, error=None):
-    pass
+    return render(request, "login.html")
 
 def authenticate_user(request):
     username = request.POST['username']
@@ -15,7 +15,7 @@ def authenticate_user(request):
         next_page = request.get('next', '/')
         return redirect(next_page)
     else:
-        reuturn login_form(request, error="Invalid user name or password")
+        return login_form(request, error="Invalid user name or password")
 
 def index(request):
     if request.method == 'POST':

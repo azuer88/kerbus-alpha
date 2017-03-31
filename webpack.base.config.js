@@ -16,6 +16,7 @@ module.exports = {
   // entry: "./src/assets/js/index",
   entry: {
     'main': "./src/assets/js/main/index",
+    'login': "./src/assets/sass/login",
   },
 
   output: {
