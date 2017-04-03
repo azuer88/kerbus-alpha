@@ -3,8 +3,8 @@ require('bootstrap-loader');
 
 var React = require('react');
 var ReactDOM = require('react-dom');
-var Login = require('./login');
+var Login = require('./login_app');
 
 require("../../sass/main.scss");
 
-ReactDOM.render(<Login/>, document.getElementById('wrapper'));
+ReactDOM.render(<Login csrfToken={django.csrf_token}/>, document.getElementById('wrapper'));

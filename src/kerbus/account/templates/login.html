@@ -1,26 +1,25 @@
 {% extends "base.html" %}
 {% load render_bundle from webpack_loader %}
+
 {% load staticfiles %}
 
 {% block csscontent %}
 {% render_bundle "login" "css" %}<!-- login stylesheet -->
+{% render_bundle "common" "css" %}<!-- login stylesheet -->
 {% endblock csscontent %}
 
+{% block jscontent %}
+<script>
+var django = {
+    csrf_token: "{{ csrf_token }}"
+};
+</script>
+{% endblock jscontent%}
+
 {% block bodycontent %}
-<div class="page-content-wrapper">
-    <form action="" method="post" id="login-form" class="form-signin">
-        {% csrf_token %}
-        <label class="required" for="id_username">Username:</label> 
-        <input autofocus="" id="id_username" maxlength="254" name="username" type="text" required="" class="form-control"/>
-        <label class="required" for="id_password">Password:</label> <input id="id_password" name="password" type="password" required="" class="form-control" />
-        {% if next_url %}
-        <input type="hidden" name="next" value="{{ next_url }}" />
-        {% endif %}
-        <label>&nbsp;</label>
-        <input type="submit" value="Log in" />
-    </form> 
-</div>
+    <div id="wrapper">
+    </div>
 
-{% endblock bodycontent %}
-
+{% render_bundle 'common' 'js' %}
 {% render_bundle 'login' 'js' %}
+{% endblock bodycontent %}

@@ -6,7 +6,8 @@ var cssPath = path.resolve("./src/assets/css/");
 var scssPath = path.resolve("./src/assets/sass/");
 
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var CommonsPlugin = new require("webpack/lib/optimize/CommonsChunkPlugin")
+var CommonsPlugin = require("webpack/lib/optimize/CommonsChunkPlugin")
+var SplitByPathPlugin = require("webpack-split-by-path");
 
 process.traceDeprecation = true;
 
@@ -32,6 +33,15 @@ module.exports = {
               minChunks: 4,
               name: "common",
       }),
+      //new SplitByPathPlugin([
+      //  {
+      //    name: 'vendor',
+      //    path: path.join(__dirname, './node_modules/')
+      //  },
+      //  {
+      //      manifest: 'app-entry'
+      //  }
+      //]),
   ],
   module: {
       rules: [

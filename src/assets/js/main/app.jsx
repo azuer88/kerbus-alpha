@@ -2,7 +2,6 @@ var React = require('react');
 
 var MyJumbotron = require('react-bootstrap/lib/Jumbotron');
 var DynMenu = require('./dymenu');
-var LoginButton = require('./login');
 
 var $ = require('jquery');
 
@@ -35,7 +34,6 @@ module.exports = React.createClass({
                               <p>Donec nulla purus montes porta morbi quis ante nunc purus...</p>
 
                               <p><a href="#" target="_blank" className="btn btn-success btn-lg" onClick={this.onButtonClick}>Get started today</a></p>
-                              <LoginButton refId="login-dialog-1" submitHandler={this.onLoginSubmit}></LoginButton>
                             </div>
                         </MyJumbotron>
                </div>
