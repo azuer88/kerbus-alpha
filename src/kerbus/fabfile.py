@@ -8,9 +8,10 @@ from fabric.contrib.console import confirm
 
 
 env.roledefs = {
-   'root': ['root@django',],
-   'user': ['django@django',],
+   'root': ['root@django', ],
+   'user': ['django@django', ],
 }
+
 
 def _get_prod_file_list():
     return [
@@ -26,7 +27,7 @@ def _get_prod_file_list():
 def _get_django_path():
     fname = os.path.realpath(__file__)
     return os.path.dirname(fname)
-    
+
 
 def _get_project_path():
     django = _get_django_path()
@@ -58,14 +59,16 @@ def test():
     with settings(warn_only=True):
         result = local('./manage.py test', capture=True)
     if result.failed and not confirm("Tests failed.  Continue anyway?"):
-       abort("Aborting at user request.")
+        abort("Aborting at user request.")
+
 
 def collectstatic():
     local('./manage.py collectstatic --no-input')
 
+
 def _replace_path_stats():
     prj = _get_project_path()
-    # src = os.path.join(prj, 'src') 
+    # src = os.path.join(prj, 'src')
     src = prj
     dst = os.path.join('/webapps', _get_repo_name())
     target = os.path.join(prj, 'webpack-stats-prod.json')
@@ -78,13 +81,14 @@ def _replace_path_stats():
 def create_tar():
     local('npm run build-production')
     with lcd("../../"):
-         arc = _get_repo_name() + '.tar.bz2'
-         local("tar cvfj " + 
-                arc + ' ' + 
-                "--exclude='*.pyc' " +
-                "--exclude='fabfile.py' " +
-                "--exclude='local_settings.py' " +
-                " ".join(_get_prod_file_list()))
+        arc = _get_repo_name() + '.tar.bz2'
+        local("tar cvfj " +
+              arc + ' ' +
+              "--exclude='*.pyc' " +
+              "--exclude='fabfile.py' " +
+              "--exclude='local_settings.py' " +
+              " ".join(_get_prod_file_list()))
+
 
 @roles('user')
 def upload_tar():
@@ -92,7 +96,7 @@ def upload_tar():
     prj_name = _get_repo_name()
     target = prj_name + '.tar.bz2'
     with cd("/webapps/"), lcd("../../"):
-            put(target, prj_name)
+        put(target, prj_name)
 
 
 @roles('user')
@@ -101,7 +105,7 @@ def untar():
     prj_name = _get_repo_name()
     target = prj_name + '.tar.bz2'
     with cd("/webapps/" + prj_name):
-         run('tar xvfj ' + target)
+        run('tar --overwrite -xvjf ' + target)
 
 
 def deploy():
