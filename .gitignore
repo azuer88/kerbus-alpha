@@ -109,4 +109,4 @@ src/static/
 
 # deployment archives
 *.tar.bz2
-
+ssl-certs/
