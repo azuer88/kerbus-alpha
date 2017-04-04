@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.views.generic.base import RedirectView
+
 import settings
 
 # from api import UserViewSet
@@ -27,14 +29,17 @@ from custom.views import my404handler
 
 
 urlpatterns = [
-    url('', include('main.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^error/', include('custom.urls')),
-    # url(r'^', include(router.urls)),
-    url('menu/', include('asimplemenu.urls')),
+    url('^menu/', include('asimplemenu.urls')),
     url(r'^account/', include('account.urls')),
-    # url(r'^api-auth/', include('rest_framework.urls',
-    #                            namespace='rest_framework')),
+    url(r'^login', RedirectView.as_view(
+        pattern_name='loginindex', permanent=True
+    )),
+    url(r'^logout', RedirectView.as_view(
+        pattern_name='loginindex', permanent=True
+    )),
+    url('', include('main.urls')),
 ]
 
 if settings.DEBUG:
