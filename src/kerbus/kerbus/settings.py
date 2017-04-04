@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'main',
     'custom',
     'asimplemenu',
+    'snippet',
 ]
 
 MIDDLEWARE = [
