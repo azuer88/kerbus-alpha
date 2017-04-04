@@ -21,5 +21,23 @@ class Snippet(models.Model):
                              default='friendly',
                              max_length=100)
 
+    @property
+    def excerpt(self):
+        words = self.code.split()[:9]
+        joined = " ".join(words[:8])
+        if len(words) == 9:
+            joined = joined + '...'
+        return joined
+
+    def __unicode__(self):
+        if self.title:
+            return self.title
+        else:
+            return self.excerpt
+
+    @property
+    def title_or_code(self):
+        return self.__unicode__()
+
     class Meta:
         ordering = ('created',)
