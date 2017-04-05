@@ -2,15 +2,16 @@ var React = require('react');
 var $ = require('jquery');
 var Login = require('./login');
 
-module.exports = React.createClass({
+var LoginPage = React.createClass({
     render: function() {
         return (
             <div>
                 <div id="page-content-wrapper">
-                    <Login csrfToken={this.props.csrfToken}/>
+                    <Login />
                </div>
             </div>
         );
     }
 });
 
+module.exports = LoginPage

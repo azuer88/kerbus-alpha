@@ -6,9 +6,12 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var $ = require('jquery');
+var Cookies = require('js-cookie');
 
-module.exports = React.createClass({
+var LoginForm = React.createClass({
+
     render: function() {
+        var csrftoken = Cookies.get('csrftoken')
         return (
             <div className="container-fluid">
                 <form className="form-signin" method="post">
@@ -24,10 +27,11 @@ module.exports = React.createClass({
                     <button className="btn btn-lg btn-primary btn-block"
                         type="submit">Login</button>
                     <input type="hidden" name="csrfmiddlewaretoken"
-                        value={this.props.csrfToken} />
+                        value={csrftoken} />
                 </form>
             </div>
         );
     }
 });
 
+module.exports = LoginForm
