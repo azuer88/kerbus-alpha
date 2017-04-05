@@ -13,7 +13,6 @@ var LoginForm = React.createClass({
     render: function() {
         var csrftoken = Cookies.get('csrftoken')
         return (
-            <div className="container-fluid">
                 <form className="form-signin" method="post">
                     <h2 className="form-signin-heading">
                         Please login
@@ -29,7 +28,6 @@ var LoginForm = React.createClass({
                     <input type="hidden" name="csrfmiddlewaretoken"
                         value={csrftoken} />
                 </form>
-            </div>
         );
     }
 });
