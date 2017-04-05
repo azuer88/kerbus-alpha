@@ -39,6 +39,7 @@ urlpatterns = [
     url(r'^logout', RedirectView.as_view(
         pattern_name='loginindex', permanent=True
     )),
+    url(r'^snippets/', include('snippet.urls')),
     url('', include('main.urls')),
 ]
 
