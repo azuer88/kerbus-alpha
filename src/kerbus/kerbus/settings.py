@@ -165,10 +165,6 @@ except NameError:
         pass
 
 REST_FRAMEWORK = {
-    # Use Django's standard django.contrib.auth permissions
-    'DEFAULT_PERMISSION_CLASSES': [
-         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
-    ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
     ],
