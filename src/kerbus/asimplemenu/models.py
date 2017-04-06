@@ -24,6 +24,14 @@ def DescField(*args, **kwargs):
 class Group(models.Model):
     name = NameField()
     description = DescField()
+    parent = models.ForeignKey('Group', null=True, blank=True)
+
+    @property
+    def puid(self):
+        if self.parent:
+            return self.parent.id
+        else:
+            return 0
 
     def __unicode__(self):
         return self.name

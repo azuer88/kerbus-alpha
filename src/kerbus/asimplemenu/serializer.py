@@ -26,4 +26,4 @@ class MenuGroupSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Group
-        fields = ('id', 'name', 'description', 'items')
+        fields = ('id', 'name', 'description', 'puid', 'items')
