@@ -10,7 +10,19 @@ class MenuItemSerializer(serializers.ModelSerializer):
         fields = ['id', 'title', 'link', 'load']
 
 
+class MenuItemRelatedField(serializers.RelatedField):
+    def to_representation(self, value):
+        obj = {
+            "title": str(value.title),
+            "link": str(value.link),
+            "load": str(value.load),
+        }
+        return obj
+
+
 class MenuGroupSerializer(serializers.ModelSerializer):
+    items = MenuItemRelatedField(many=True, queryset=Item.objects.all())
+
     class Meta:
         model = Group
-        fields = '__all__'
+        fields = ('id', 'name', 'description', 'items')

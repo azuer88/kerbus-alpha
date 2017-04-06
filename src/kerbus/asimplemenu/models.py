@@ -35,7 +35,7 @@ class Item(models.Model):
                             blank=True, null=False, default='')
     load = models.ForeignKey(Group, null=True, blank=True)
     sequence = models.IntegerField(default=0)
-    groups = models.ManyToManyField(Group, related_name="group")
+    groups = models.ManyToManyField(Group, related_name="items")
 
     def __unicode__(self):
         if self.link:
