@@ -33,9 +33,17 @@ class Item(models.Model):
     title = NameField()
     link = models.CharField(max_length=80,
                             blank=True, null=False, default='')
-    load = models.ForeignKey(Group, null=True, blank=True)
+    load = models.ForeignKey(Group, null=True,
+                             blank=True, related_name='submenu')
     sequence = models.IntegerField(default=0)
     groups = models.ManyToManyField(Group, related_name="items")
+
+    @property
+    def muid(self):
+        if self.load:
+            return self.load.id
+        else:
+            return 0
 
     def __unicode__(self):
         if self.link:

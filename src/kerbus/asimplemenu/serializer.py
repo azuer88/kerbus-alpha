@@ -13,9 +13,10 @@ class MenuItemSerializer(serializers.ModelSerializer):
 class MenuItemRelatedField(serializers.RelatedField):
     def to_representation(self, value):
         obj = {
-            "title": str(value.title),
-            "link": str(value.link),
-            "load": str(value.load),
+            "id": value.id,
+            "title": value.title,
+            "link": value.link,
+            "load": value.muid,
         }
         return obj
 
