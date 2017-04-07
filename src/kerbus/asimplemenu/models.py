@@ -47,6 +47,11 @@ class Item(models.Model):
     groups = models.ManyToManyField(Group, related_name="items")
 
     @property
+    def membership(self):
+        mlist = self.groups.all()
+        return ",".join([m.name for m in mlist])
+
+    @property
     def muid(self):
         if self.load:
             return self.load.id
