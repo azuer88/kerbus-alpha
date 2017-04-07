@@ -19,6 +19,7 @@ class PersonMixin(models.Model):
     class Meta:
         ordering = ('last_name', 'first_name', 'middle_name', )
         abstract = True
+        unique_together = [('last_name', 'first_name', 'middle_name', ), ]
 
     def _get_mi(self):
         return u"%c." % self.middle_name[0] \
@@ -29,7 +30,7 @@ class PersonMixin(models.Model):
         namestr = "%s, %s %s" % (
             self.last_name,
             self.first_name,
-            self.midde_name)
+            self.middle_name)
         return namestr.strip()
 
     def __unicode__(self):
@@ -37,4 +38,8 @@ class PersonMixin(models.Model):
 
 
 class Person(PersonMixin, models.Model):
+    pass
+
+
+class Account(models.Model):
     pass
