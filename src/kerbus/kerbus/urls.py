@@ -31,7 +31,7 @@ from custom.views import my404handler
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^error/', include('custom.urls')),
-    url('^menu/', include('asimplemenu.urls')),
+    url(r'^menu/', include('asimplemenu.urls')),
     url(r'^account/', include('account.urls')),
     url(r'^login', RedirectView.as_view(
         pattern_name='loginindex', permanent=True
@@ -39,7 +39,8 @@ urlpatterns = [
     url(r'^logout', RedirectView.as_view(
         pattern_name='loginindex', permanent=True
     )),
-    url('', include('main.urls')),
+    url(r'^ar/', include('receivables.urls')),
+    url(r'', include('main.urls')),
 ]
 
 if settings.DEBUG:
