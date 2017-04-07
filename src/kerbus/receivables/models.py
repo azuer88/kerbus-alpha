@@ -13,20 +13,27 @@ def name_field(**kargs):
 
 class PersonMixin(models.Model):
     first_name = name_field()
-    last_name = name_field
-    midde_name = name_field(blank=True)
+    last_name = name_field()
+    middle_name = name_field(blank=True)
+
+    class Meta:
+        ordering = ('last_name', 'first_name', 'middle_name', )
+        abstract = True
+
+    def _get_mi(self):
+        return u"%c." % self.middle_name[0] \
+            if self.middle_name.strip() else ""
 
     @property
     def full_name(self):
-        if self.middle_name:
-            return "%s, %s %s." % (self.last_name,
-                                   self.first_name,
-                                   self.midde_name)
-        else:
-            return "%s, %s" % (self.last_name, self.first_name)
+        namestr = "%s, %s %s" % (
+            self.last_name,
+            self.first_name,
+            self.midde_name)
+        return namestr.strip()
 
-    class Meta:
-        abstract = True
+    def __unicode__(self):
+        return u"%s" % self.full_name
 
 
 class Person(PersonMixin, models.Model):
