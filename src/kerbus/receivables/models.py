@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.contrib.auth.models import User
 
 
 def name_field(**kargs):
@@ -30,16 +31,30 @@ class PersonMixin(models.Model):
         namestr = "%s, %s %s" % (
             self.last_name,
             self.first_name,
-            self.middle_name)
+            self._get_mi())
         return namestr.strip()
 
     def __unicode__(self):
         return u"%s" % self.full_name
 
 
-class Person(PersonMixin, models.Model):
+class CreatedModifiedMixin(models.Model):
+    created_by = models.ForeignKey(User,
+                                   related_name='%(app_label)s_%(class)s' +
+                                   '_created_by',
+                                   default=1)
+    modified_by = models.ForeignKey(User,
+                                    related_name='%(app_label)s_%(class)s' +
+                                    '_modified_by',
+                                    default=1)
+
+    class Meta:
+        abstract = True
+
+
+class Person(PersonMixin, CreatedModifiedMixin, models.Model):
     pass
 
 
-class Account(models.Model):
+class Account(CreatedModifiedMixin, models.Model):
     pass
