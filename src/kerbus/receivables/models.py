@@ -1,5 +1,4 @@
 from __future__ import unicode_literals
-import datetime
 
 from django.db import models
 from django.contrib.auth.models import User
@@ -43,13 +42,15 @@ class CreatedModifiedMixin(models.Model):
     created_by = models.ForeignKey(User,
                                    related_name='%(app_label)s_%(class)s' +
                                    '_created_by',
+                                   editable=False,
                                    default=1)
     modified_by = models.ForeignKey(User,
                                     related_name='%(app_label)s_%(class)s' +
                                     '_modified_by',
+                                    editable=False,
                                     default=1)
-    date_created = models.DateTimeField(auto_now_add=True)
-    last_modified = models.DateTimeField(auto_now=True)
+    date_created = models.DateTimeField(auto_now_add=True, editable=False)
+    last_modified = models.DateTimeField(auto_now=True, editable=False)
 
     class Meta:
         abstract = True
