@@ -47,6 +47,7 @@ class CreatedModifiedMixin(models.Model):
                                     related_name='%(app_label)s_%(class)s' +
                                     '_modified_by',
                                     default=1)
+    last_modified = models.DateTimeField(auto_now=True)
 
     class Meta:
         abstract = True
