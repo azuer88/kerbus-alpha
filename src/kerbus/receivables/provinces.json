@@ -1,0 +1,576 @@
+[
+{
+   "model": "receivables.province",
+   "pk": 1,
+   "fields": {
+      "name": "Abra"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 2,
+   "fields": {
+      "name": "Agusan del Norte"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 3,
+   "fields": {
+      "name": "Agusan del Sur"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 4,
+   "fields": {
+      "name": "Aklan"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 5,
+   "fields": {
+      "name": "Albay"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 6,
+   "fields": {
+      "name": "Antique"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 7,
+   "fields": {
+      "name": "Apayao"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 8,
+   "fields": {
+      "name": "Aurora"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 9,
+   "fields": {
+      "name": "Basilan"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 10,
+   "fields": {
+      "name": "Bataan"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 11,
+   "fields": {
+      "name": "Batanes"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 12,
+   "fields": {
+      "name": "Batangas"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 13,
+   "fields": {
+      "name": "Benguet"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 14,
+   "fields": {
+      "name": "Biliran"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 15,
+   "fields": {
+      "name": "Bohol"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 16,
+   "fields": {
+      "name": "Bukidnon"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 17,
+   "fields": {
+      "name": "Bulacan"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 18,
+   "fields": {
+      "name": "Cagayan"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 19,
+   "fields": {
+      "name": "Camarines Norte"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 20,
+   "fields": {
+      "name": "Camarines Sur"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 21,
+   "fields": {
+      "name": "Camiguin"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 22,
+   "fields": {
+      "name": "Capiz"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 23,
+   "fields": {
+      "name": "Catanduanes"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 24,
+   "fields": {
+      "name": "Cavite"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 25,
+   "fields": {
+      "name": "Cebu"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 26,
+   "fields": {
+      "name": "Compostela Valley"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 27,
+   "fields": {
+      "name": "Cotabato"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 28,
+   "fields": {
+      "name": "Davao del Norte"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 29,
+   "fields": {
+      "name": "Davao del Sur"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 30,
+   "fields": {
+      "name": "Davao Occidental"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 31,
+   "fields": {
+      "name": "Davao Oriental"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 32,
+   "fields": {
+      "name": "Dinagat Island"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 33,
+   "fields": {
+      "name": "Eastern Samar"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 34,
+   "fields": {
+      "name": "Guimaras"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 35,
+   "fields": {
+      "name": "Ifugao"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 36,
+   "fields": {
+      "name": "Ilocos Norte"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 37,
+   "fields": {
+      "name": "Ilocos Sur"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 38,
+   "fields": {
+      "name": "Iloilo"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 39,
+   "fields": {
+      "name": "Isabela"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 40,
+   "fields": {
+      "name": "Kalinga-Apayao"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 41,
+   "fields": {
+      "name": "La Union"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 42,
+   "fields": {
+      "name": "Laguna"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 43,
+   "fields": {
+      "name": "Lanao del Norte"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 44,
+   "fields": {
+      "name": "Lanao del Sur"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 45,
+   "fields": {
+      "name": "Leyte"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 46,
+   "fields": {
+      "name": "Maguindanao"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 47,
+   "fields": {
+      "name": "Marinduque"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 48,
+   "fields": {
+      "name": "Masbate"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 49,
+   "fields": {
+      "name": "Mindoro Occidental"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 50,
+   "fields": {
+      "name": "Mindoro Oriental"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 51,
+   "fields": {
+      "name": "Misamis Occidental"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 52,
+   "fields": {
+      "name": "Misamis Oriental"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 53,
+   "fields": {
+      "name": "Mountain"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 54,
+   "fields": {
+      "name": "Negros Occidental"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 55,
+   "fields": {
+      "name": "Negros Oriental"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 56,
+   "fields": {
+      "name": "Northern Samar"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 57,
+   "fields": {
+      "name": "Nueva Ecija"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 58,
+   "fields": {
+      "name": "Nueva Vizcaya"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 59,
+   "fields": {
+      "name": "Palawan"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 60,
+   "fields": {
+      "name": "Pampanga"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 61,
+   "fields": {
+      "name": "Pangasinan"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 62,
+   "fields": {
+      "name": "Quezon"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 63,
+   "fields": {
+      "name": "Quirino"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 64,
+   "fields": {
+      "name": "Rizal"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 65,
+   "fields": {
+      "name": "Romblon"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 66,
+   "fields": {
+      "name": "Samar"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 67,
+   "fields": {
+      "name": "Sarangani"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 68,
+   "fields": {
+      "name": "Shariff Kabunsuan"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 69,
+   "fields": {
+      "name": "Siquijor"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 70,
+   "fields": {
+      "name": "Sorsogon"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 71,
+   "fields": {
+      "name": "South Cotabato"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 72,
+   "fields": {
+      "name": "Southern Leyte"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 73,
+   "fields": {
+      "name": "Sultan Kudarat"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 74,
+   "fields": {
+      "name": "Sulu"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 75,
+   "fields": {
+      "name": "Surigao del Norte"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 76,
+   "fields": {
+      "name": "Surigao del Sur"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 77,
+   "fields": {
+      "name": "Tarlac"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 78,
+   "fields": {
+      "name": "Tawi-Tawi"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 79,
+   "fields": {
+      "name": "Zambales"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 80,
+   "fields": {
+      "name": "Zamboanga del Norte"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 81,
+   "fields": {
+      "name": "Zamboanga del Sur"
+   }
+},
+{
+   "model": "receivables.province",
+   "pk": 82,
+   "fields": {
+      "name": "Zamboanga Sibugay"
+   }
+}
+]

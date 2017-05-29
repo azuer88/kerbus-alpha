@@ -56,6 +56,24 @@ class CreatedModifiedMixin(models.Model):
         abstract = True
 
 
+class Province(models.Model):
+    name = models.CharField(max_length=30)
+
+    def __unicode__(self):
+        return u"%s" % self.name
+
+    class Meta:
+        ordering = ['name']
+
+
+class Address(models.Model):
+    province = models.ForeignKey(Province)
+    street = models.CharField(max_length=100, default='')
+
+    class Meta:
+        verbose_name_plural = "Addresses"
+
+
 class Person(PersonMixin, CreatedModifiedMixin, models.Model):
     pass
 
