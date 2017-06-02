@@ -56,7 +56,7 @@ class CreatedModifiedMixin(models.Model):
         abstract = True
 
 
-class Address(models.Model):
+class Location(models.Model):
     street = models.CharField("Street Address",
                               max_length=100, default='')
     barangay = models.CharField("Barangay / District",
@@ -68,8 +68,8 @@ class Address(models.Model):
     province = models.CharField("Province / Region",
                                 max_length=100, default='')
 
-    class Meta:
-        verbose_name_plural = "Addresses"
+    # class Meta:
+    #    verbose_name_plural = "Addresses"
 
 
 class Person(PersonMixin, CreatedModifiedMixin, models.Model):
