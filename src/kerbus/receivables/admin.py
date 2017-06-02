@@ -2,7 +2,6 @@ from django.contrib import admin
 
 from models import Person
 from models import Account
-from models import Province
 from models import Address
 
 
@@ -13,11 +12,6 @@ class PersonAdmin(admin.ModelAdmin):
 
 @admin.register(Account)
 class AccountAdmin(admin.ModelAdmin):
-    pass
-
-
-@admin.register(Province)
-class ProvinceAdmin(admin.ModelAdmin):
     pass
 
 

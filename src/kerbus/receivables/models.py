@@ -56,19 +56,17 @@ class CreatedModifiedMixin(models.Model):
         abstract = True
 
 
-class Province(models.Model):
-    name = models.CharField(max_length=30)
-
-    def __unicode__(self):
-        return u"%s" % self.name
-
-    class Meta:
-        ordering = ['name']
-
-
 class Address(models.Model):
-    province = models.ForeignKey(Province)
-    street = models.CharField(max_length=100, default='')
+    street = models.CharField("Street Address",
+                              max_length=100, default='')
+    barangay = models.CharField("Barangay / District",
+                                max_length=100, default='')
+    city = models.CharField("City / Municipality",
+                            max_length=100, default='')
+    zipcode = models.CharField("ZIP Code",
+                               max_length=20, default='')
+    province = models.CharField("Province / Region",
+                                max_length=100, default='')
 
     class Meta:
         verbose_name_plural = "Addresses"
