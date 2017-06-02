@@ -64,7 +64,9 @@ ADDRESS_TYPE_CHOICE = [
 
 
 class Address(models.Model):
-    kind = models.SmallIntegerField("Type", default=1)
+    kind = models.SmallIntegerField("Type",
+                                    default=1, choices=ADDRESS_TYPE_CHOICE)
+    person = models.ForeignKey('Person')
     street = models.CharField("Street Address",
                               max_length=100, default='')
     barangay = models.CharField("Barangay / District",
@@ -78,6 +80,9 @@ class Address(models.Model):
 
     class Meta:
         verbose_name_plural = "Addresses"
+
+    def __unicode__(self):
+        return u"{}, {}".format(self.street, self.city)
 
 
 class Person(PersonMixin, CreatedModifiedMixin, models.Model):
