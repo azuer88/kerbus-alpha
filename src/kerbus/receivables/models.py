@@ -107,11 +107,12 @@ class Transaction(CreatedModifiedMixin, models.Model):
     date = models.DateField(default=datetime.today)
     particulars = models.CharField(max_length=100, default="Payment")
     amount = models.DecimalField(max_digits=12,
-                                 decimal_places=4,
+                                 decimal_places=2,
                                  default="0.00")
 
 
 class Account(CreatedModifiedMixin, models.Model):
     person = models.OneToOneField(Person)
+
     def __unicode__(self):
         return u"Account: {}".format(self.person.full_name)
