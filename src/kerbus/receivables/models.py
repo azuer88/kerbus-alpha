@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
-from django.dispatch import receiver
 
 from datetime import datetime
 
@@ -93,12 +92,6 @@ class Person(PersonMixin, CreatedModifiedMixin, models.Model):
     pass
 
 
-@receiver(post_save, sender=Person)
-def create_account_for_person(sender, instance, **kwargs):
-    if kwargs['created']:
-        acct = Account().person = instance
-        acct.save()
-
 T_CR = 1
 T_DR = 2
 TRANSACTION_TYPE_CHOICE = [
@@ -126,3 +119,12 @@ class Account(CreatedModifiedMixin, models.Model):
 
     def __unicode__(self):
         return u"Account: {}".format(self.person.full_name)
+
+
+def create_account_for_person(sender, instance, created, **kwargs):
+    """Create Account for every new Person."""
+    if created:
+        Account.objects.create(person=instance)
+
+post_save.connect(create_account_for_person, sender=Person,
+                  weak=False, dispatch_uid='create_account_for_person_uid')
