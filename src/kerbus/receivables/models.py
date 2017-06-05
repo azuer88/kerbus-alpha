@@ -2,6 +2,8 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.core import signals
+from django.dispatch import receiver
 
 from datetime import datetime
 
@@ -90,6 +92,13 @@ class Address(models.Model):
 class Person(PersonMixin, CreatedModifiedMixin, models.Model):
     pass
 
+
+@receiver(signals.post_save, sender=Person)
+def create_account_for_person(sender, instance, **kwargs):
+    if kwargs['created']:
+        acct = Account().person = instance
+        acct.save()
+
 T_CR = 1
 T_DR = 2
 TRANSACTION_TYPE_CHOICE = [
@@ -103,7 +112,7 @@ class Transaction(CreatedModifiedMixin, models.Model):
                                       choices=TRANSACTION_TYPE_CHOICE,
                                       default=T_DR
                                       )
-    account = models.ForeignKey('Account')
+    account = models.ForeignKey('Account', on_delete=models.CASCADE)
     date = models.DateField(default=datetime.today)
     particulars = models.CharField(max_length=100, default="Payment")
     amount = models.DecimalField(max_digits=12,
@@ -112,7 +121,8 @@ class Transaction(CreatedModifiedMixin, models.Model):
 
 
 class Account(CreatedModifiedMixin, models.Model):
-    person = models.OneToOneField(Person)
+    person = models.OneToOneField(Person,
+                                  on_delete=models.CASCADE)
 
     def __unicode__(self):
         return u"Account: {}".format(self.person.full_name)
