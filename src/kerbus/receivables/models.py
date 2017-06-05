@@ -90,12 +90,28 @@ class Address(models.Model):
 class Person(PersonMixin, CreatedModifiedMixin, models.Model):
     pass
 
+T_CR = 1
+T_DR = 2
+TRANSACTION_TYPE_CHOICE = [
+        (T_CR, "Credit"),
+        (T_DR, "Debit"),
+    ]
+
 
 class Transaction(CreatedModifiedMixin, models.Model):
+    t_type = models.SmallIntegerField("Type",
+                                      choices=TRANSACTION_TYPE_CHOICE,
+                                      default=T_DR
+                                      )
     account = models.ForeignKey('Account')
     date = models.DateField(default=datetime.today)
-    pass
+    particulars = models.CharField(max_length=100, default="Payment")
+    amount = models.DecimalField(max_digits=12,
+                                 decimal_places=4,
+                                 default="0.00")
 
 
 class Account(CreatedModifiedMixin, models.Model):
-    pass
+    person = models.OneToOneField(Person)
+    def __unicode__(self):
+        return u"Account: {}".format(self.person.full_name)
