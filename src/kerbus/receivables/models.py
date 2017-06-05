@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.contrib.auth.models import User
-from django.core import signals
+from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from datetime import datetime
@@ -93,7 +93,7 @@ class Person(PersonMixin, CreatedModifiedMixin, models.Model):
     pass
 
 
-@receiver(signals.post_save, sender=Person)
+@receiver(post_save, sender=Person)
 def create_account_for_person(sender, instance, **kwargs):
     if kwargs['created']:
         acct = Account().person = instance
