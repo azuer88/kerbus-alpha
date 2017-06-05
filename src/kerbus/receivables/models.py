@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
 
+from datetime import datetime
+
 
 def name_field(**kargs):
     kargs.setdefault('max_length', 60)
@@ -86,6 +88,12 @@ class Address(models.Model):
 
 
 class Person(PersonMixin, CreatedModifiedMixin, models.Model):
+    pass
+
+
+class Transaction(CreatedModifiedMixin, models.Model):
+    account = models.ForeignKey('Account')
+    date = models.DateField(default=datetime.today)
     pass
 
 

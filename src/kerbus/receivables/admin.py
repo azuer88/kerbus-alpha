@@ -3,6 +3,7 @@ from django.contrib import admin
 from models import Person
 from models import Account
 from models import Address
+from models import Transaction
 
 
 class AddressInline(admin.StackedInline):
@@ -25,4 +26,9 @@ class AccountAdmin(admin.ModelAdmin):
 
 @admin.register(Address)
 class AddressAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Transaction)
+class TransactionAdmin(admin.ModelAdmin):
     pass
